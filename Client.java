@@ -46,8 +46,10 @@ public class Client {
                         if(userInput.equals("QUIT")) {
                             System.exit(0);
                         }
+                        if(!is.ready())
+                            break;
                     }
-
+                    os.flush();
                 }
                 // close the input and output stream
                 // close the socket
