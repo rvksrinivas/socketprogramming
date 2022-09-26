@@ -53,14 +53,14 @@ public class Server {
                             os.println("s:The new Record ID is " + maxRecordId);
                             break;
                         case "DELETE":
-                            delete(addressBookList, line);
+                            addressBookList = delete(addressBookList, line);
                             os.println("s:200 OK");
                             break;
                         case "LIST":
                             os.println("s:200 OK");
                             os.println("s:The list of records in the book:");
                             for(Object entry: addressBookList.values()) {
-                                os.println(((Server.AddressBook)entry).getRecordId() + " " + ((Server.AddressBook)entry).getFirstName() + "" + ((Server.AddressBook)entry).getLastName() + " " + ((Server.AddressBook)entry).getPhoneNumber());
+                                os.println(((Server.AddressBook)entry).getRecordId() + " " + ((Server.AddressBook)entry).getFirstName() + " " + ((Server.AddressBook)entry).getLastName() + " " + ((Server.AddressBook)entry).getPhoneNumber());
                             }
                             break;
                         case "SHUDDOWN":
@@ -75,6 +75,7 @@ public class Server {
                             os.println("s:200 OK");
                             break;
                     }
+                    os.flush();
                 }
                 // close input and output stream and socket
                 is.close();
@@ -108,9 +109,10 @@ public class Server {
         return addressBookList;
     }
 
-    public static void delete(Map addressBookList, String record) {
+    public static Map delete(Map addressBookList, String record) {
         String recordId = record.split(" ")[1];
         addressBookList.remove(recordId);
+        return addressBookList;
     }
 
     public static Map readAddressBook(Map addressBookList) {
@@ -149,7 +151,7 @@ public class Server {
         try {
             os = new BufferedWriter(new FileWriter(addressBook));
             for(Object entry: addressBookList.values()) {
-                line = ((Server.AddressBook)entry).getRecordId() + " " + ((Server.AddressBook)entry).getFirstName() + "" + ((Server.AddressBook)entry).getLastName() + " " + ((Server.AddressBook)entry).getPhoneNumber();
+                line = ((Server.AddressBook)entry).getRecordId() + " " + ((Server.AddressBook)entry).getFirstName() + " " + ((Server.AddressBook)entry).getLastName() + " " + ((Server.AddressBook)entry).getPhoneNumber();
                 os.write(line + "\n");
             }
             os.close();
