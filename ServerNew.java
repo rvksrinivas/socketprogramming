@@ -71,28 +71,28 @@ class ClientHandlerNew extends Thread {
 
     private void loadLogin() {
         ClientHandlerNew.UserLogin userLogin = new UserLogin();
+        userLogin.setUserID("root");
+        userLogin.setPassword("root05");
+        userLogin.setStatus("LOGOUT");
+        this.users.put(userLogin.getUserID(), userLogin);
+
+        userLogin = new UserLogin();
         userLogin.setUserID("john");
-        userLogin.setPassword("john01");
-        userLogin.setStatus("LOGOUT");
-        this.users.put(userLogin.getUserID(), userLogin);
-
-        userLogin = new UserLogin();
-        userLogin.setUserID("matt");
-        userLogin.setPassword("matt02");
+        userLogin.setPassword("john05");
         userLogin.setStatus("LOGOUT");
         this.users.put(userLogin.getUserID(), userLogin);
 
 
         userLogin = new UserLogin();
-        userLogin.setUserID("kate");
-        userLogin.setPassword("kate03");
+        userLogin.setUserID("david");
+        userLogin.setPassword("david07");
         userLogin.setStatus("LOGOUT");
         this.users.put(userLogin.getUserID(), userLogin);
 
 
         userLogin = new UserLogin();
-        userLogin.setUserID("marry");
-        userLogin.setPassword("marry04");
+        userLogin.setUserID("mary");
+        userLogin.setPassword("mary08");
         userLogin.setStatus("LOGOUT");
         this.users.put(userLogin.getUserID(), userLogin);
     }
@@ -166,15 +166,10 @@ class ClientHandlerNew extends Thread {
                     case "LOOK":
                         look(received);
                         break;
+                    case "":
+                        break;
                 }
-                if(received.equals("QUIT"))
-                {
-                    System.out.println("Client " + this.serviceSocket + " sends exit...");
-                    System.out.println("Closing this connection.");
-                    this.serviceSocket.close();
-                    System.out.println("Connection closed");
-                    break;
-                }
+                break;
             } catch (IOException e) {
                 e.printStackTrace();
             }
