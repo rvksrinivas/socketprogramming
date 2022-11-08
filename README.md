@@ -5,26 +5,29 @@ Server side
 
 Execution command:
 ~$ makefile 
-~$ java Server
+~$ java ServerMulti
 
 where:
 a. makefile will compile the .java file
-b. java Server is for running the executable of server source code
+b. java ServerMulti is for running the executable of server source code
 
 
 Client side
 
 Execution command:
 ~$ makefile 
-~$ java Client ServerIPAddress
+~$ java ClientMulti
 
 where:
-a. java Client is for running the executable of client src code
-b. ServerIPAddress is the IP address of the server
-c. (ADD FirstName LastName PhoneNumber) is to add new item to the addressbook
-d. (DELETE RecordID) is to delete the record from the addressbook
-e. (LIST) is list the item in the addressbook
-f. (QUIT) is to stop the client 
-g. (SHUDDOWN) is to stop the server
+a. java ClientMulti is for running the executable of client source code
+b. (ADD FirstName LastName PhoneNumber) is to add new item to the addressbook
+c. (DELETE RecordID) is to delete the record from the addressbook
+d. (LIST) is list the item in the addressbook
+e. (QUIT) is to stop the client 
+f. (SHUDDOWN) is to stop the server
+g. (LOGIN) is to execute the privilege commands (ADD, DELETE and SHUTDOWN)
+h. (LOGOUT) is remove the pribilege as mentioned above
+i. (WHO) is to list the active login user list
+j. (LOOK) is to lookup address book by 1 - firstname, 2-lastname, 3-phonenumber
 
 
